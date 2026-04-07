@@ -1,0 +1,11 @@
+{
+  "iconDefinitions": {
+    "_f_chic": {
+      "iconPath": "./chic-file-icon.png"
+    }
+  },
+  "fileExtensions": {
+    "chic": "_f_chic"
+  },
+  "file": "_f_chic"
+}

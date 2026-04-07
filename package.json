@@ -1,0 +1,95 @@
+{
+  "name": "vscode-chic",
+  "displayName": "Chic Language",
+  "description": "Syntax highlighting, snippets, file icon, and build commands for the Chic programming language.",
+  "version": "0.1.0",
+  "publisher": "chic-lang",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:chic"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "chic",
+        "aliases": ["Chic", "chic"],
+        "extensions": [".chic"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "chic",
+        "scopeName": "source.chic",
+        "path": "./syntaxes/chic.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "chic",
+        "path": "./snippets/chic.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "chic",
+        "label": "Chic File Icons",
+        "path": "./icons/chic-icon-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "chic.build",
+        "title": "Chic: Build"
+      },
+      {
+        "command": "chic.run",
+        "title": "Chic: Run"
+      },
+      {
+        "command": "chic.init",
+        "title": "Chic: Init Project"
+      }
+    ],
+    "configuration": {
+      "title": "Chic",
+      "properties": {
+        "chic.executablePath": {
+          "type": "string",
+          "default": "chic",
+          "description": "Path to the chic compiler executable. Defaults to 'chic' (assumes it is on $PATH)."
+        }
+      }
+    },
+    "problemMatchers": [
+      {
+        "name": "chic",
+        "owner": "chic",
+        "fileLocation": ["autoDetect", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.+):(\\d+):(\\d+) error: (.+)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}

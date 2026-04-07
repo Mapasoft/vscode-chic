@@ -1,0 +1,265 @@
+{
+  "name": "Chic",
+  "scopeName": "source.chic",
+  "fileTypes": [
+    "chic"
+  ],
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.chic",
+      "match": "//.*$"
+    },
+    {
+      "name": "comment.block.chic",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+    {
+      "name": "meta.annotation.chic",
+      "match": "@[a-zA-Z_][a-zA-Z0-9_]*(\\([^)]*\\))?",
+      "captures": {
+        "0": {
+          "name": "entity.name.function.decorator.chic"
+        }
+      }
+    },
+    {
+      "name": "string.quoted.double.chic",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.chic",
+          "match": "\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|[0-7]{1,3}|[\\\\'\"nrtbf0])"
+        }
+      ]
+    },
+    {
+      "name": "string.quoted.single.chic",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape.chic",
+          "match": "\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|[0-7]{1,3}|[\\\\'\"nrtbf0])"
+        }
+      ]
+    },
+    {
+      "name": "keyword.control.chic",
+      "match": "\\b(if|else|for|in|while|loop|break|continue|return|match|switch|case|default|step)\\b"
+    },
+    {
+      "name": "keyword.declaration.chic",
+      "match": "\\b(func|struct|enum|type|alias|import|package|module|const|static|mutable|pub|private)\\b"
+    },
+    {
+      "name": "keyword.other.chic",
+      "match": "\\b(new|release|delete|alloc|free|sizeof|alignof)\\b"
+    },
+    {
+      "name": "constant.language.boolean.chic",
+      "match": "\\b(true|false)\\b"
+    },
+    {
+      "name": "constant.language.null.chic",
+      "match": "\\b(null|nil)\\b"
+    },
+    {
+      "name": "storage.type.primitive.chic",
+      "match": "\\b(i8|i16|i32|i64|u8|u16|u32|u64|f32|f64|float|double|int|uint|bool|string|cstring|char|void|auto|any)\\b"
+    },
+    {
+      "name": "entity.name.type.chic",
+      "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+    },
+    {
+      "name": "constant.numeric.hex.chic",
+      "match": "\\b0[xX][0-9A-Fa-f]+\\b"
+    },
+    {
+      "name": "constant.numeric.binary.chic",
+      "match": "\\b0[bB][01]+\\b"
+    },
+    {
+      "name": "constant.numeric.octal.chic",
+      "match": "\\b0[oO][0-7]+\\b"
+    },
+    {
+      "name": "constant.numeric.float.chic",
+      "match": "\\b[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?\\b"
+    },
+    {
+      "name": "constant.numeric.integer.chic",
+      "match": "\\b[0-9]+\\b"
+    },
+    {
+      "name": "meta.function.definition.chic",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*(func)\\b",
+      "captures": {
+        "1": {
+          "name": "entity.name.function.chic"
+        },
+        "2": {
+          "name": "keyword.declaration.chic"
+        }
+      }
+    },
+    {
+      "name": "meta.struct.definition.chic",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*(struct)\\b",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.struct.chic"
+        },
+        "2": {
+          "name": "keyword.declaration.chic"
+        }
+      }
+    },
+    {
+      "name": "meta.enum.definition.chic",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*(enum)\\b",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.enum.chic"
+        },
+        "2": {
+          "name": "keyword.declaration.chic"
+        }
+      }
+    },
+    {
+      "name": "meta.variable.declaration.chic",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:=)",
+      "captures": {
+        "1": {
+          "name": "variable.other.chic"
+        },
+        "2": {
+          "name": "keyword.operator.assignment.chic"
+        }
+      }
+    },
+    {
+      "name": "meta.variable.typed.chic",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*(\\^?)([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": {
+          "name": "variable.other.chic"
+        },
+        "2": {
+          "name": "keyword.operator.pointer.chic"
+        },
+        "3": {
+          "name": "storage.type.chic"
+        }
+      }
+    },
+    {
+      "name": "meta.field.initializer.chic",
+      "match": "(\\.)([a-zA-Z_][a-zA-Z0-9_]*)\\s*(=)",
+      "captures": {
+        "1": {
+          "name": "punctuation.accessor.chic"
+        },
+        "2": {
+          "name": "variable.other.member.chic"
+        },
+        "3": {
+          "name": "keyword.operator.assignment.chic"
+        }
+      }
+    },
+    {
+      "name": "keyword.operator.range.chic",
+      "match": "\\.\\.(=)?"
+    },
+    {
+      "name": "keyword.operator.pointer.chic",
+      "match": "\\^"
+    },
+    {
+      "name": "keyword.operator.arrow.chic",
+      "match": "->"
+    },
+    {
+      "name": "keyword.operator.comparison.chic",
+      "match": "(==|!=|<=|>=|<|>)"
+    },
+    {
+      "name": "keyword.operator.logical.chic",
+      "match": "(&&|\\|\\||!)"
+    },
+    {
+      "name": "keyword.operator.assignment.chic",
+      "match": "(:=|=|\\+=|-=|\\*=|/=|%=|&=|\\|=|\\^=)"
+    },
+    {
+      "name": "keyword.operator.arithmetic.chic",
+      "match": "(\\+|-|\\*|/|%)"
+    },
+    {
+      "name": "keyword.operator.bitwise.chic",
+      "match": "(&|\\||\\^|~|<<|>>)"
+    },
+    {
+      "name": "punctuation.accessor.chic",
+      "match": "\\."
+    },
+    {
+      "name": "meta.function-call.chic",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+      "captures": {
+        "1": {
+          "name": "entity.name.function.call.chic"
+        },
+        "2": {
+          "name": "punctuation.definition.parameters.begin.chic"
+        }
+      }
+    },
+    {
+      "name": "meta.generic.chic",
+      "begin": "<",
+      "end": ">",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.generic.begin.chic"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.generic.end.chic"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#type-reference"
+        },
+        {
+          "name": "storage.type.generic.chic",
+          "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+        }
+      ]
+    },
+    {
+      "name": "variable.other.chic",
+      "match": "\\b[a-z_][a-zA-Z0-9_]*\\b"
+    }
+  ],
+  "repository": {
+    "type-reference": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.chic",
+          "match": "\\b(i8|i16|i32|i64|u8|u16|u32|u64|f32|f64|float|double|int|uint|bool|string|cstring|char|void)\\b"
+        },
+        {
+          "name": "entity.name.type.chic",
+          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    }
+  }
+}

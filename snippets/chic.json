@@ -1,0 +1,79 @@
+{
+  "Function": {
+    "prefix": "func",
+    "body": [
+      "func ${1:name}(${2:params}) -> ${3:void} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Function declaration"
+  },
+  "Struct": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name} {",
+      "\t${2:field} : ${3:i32}",
+      "}"
+    ],
+    "description": "Struct declaration"
+  },
+  "Enum": {
+    "prefix": "enum",
+    "body": [
+      "enum ${1:Name} : i32 {",
+      "\t${2:Member}",
+      "}"
+    ],
+    "description": "Enum declaration"
+  },
+  "For-in loop": {
+    "prefix": "for",
+    "body": [
+      "for ${1:item} in ${2:collection} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For-in loop"
+  },
+  "If block": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If block"
+  },
+  "If-else block": {
+    "prefix": "ifelse",
+    "body": [
+      "if ${1:condition} {",
+      "\t$2",
+      "} else {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If-else block"
+  },
+  "Import": {
+    "prefix": "import",
+    "body": "import ${1:package.name}",
+    "description": "Import statement"
+  },
+  "Type alias": {
+    "prefix": "alias",
+    "body": "alias ${1:Name} : ${2:Type}",
+    "description": "Type alias"
+  },
+  "Extension method": {
+    "prefix": "ext",
+    "body": [
+      "extension<${1:T}> {",
+      "\tfunc ${2:name}(self: ^${1:T}) -> ${3:void} {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Extension method block"
+  }
+}
