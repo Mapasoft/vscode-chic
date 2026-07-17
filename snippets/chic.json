@@ -2,7 +2,7 @@
   "Function": {
     "prefix": "func",
     "body": [
-      "func ${1:name}(${2:params}) -> ${3:void} {",
+      "${1:name} : func(${2:params}) -> ${3:void} {",
       "\t$0",
       "}"
     ],
@@ -11,7 +11,7 @@
   "Struct": {
     "prefix": "struct",
     "body": [
-      "struct ${1:Name} {",
+      "${1:Name} : struct {",
       "\t${2:field} : ${3:i32}",
       "}"
     ],
@@ -20,7 +20,7 @@
   "Enum": {
     "prefix": "enum",
     "body": [
-      "enum ${1:Name} : i32 {",
+      "${1:Name} : enum {",
       "\t${2:Member}",
       "}"
     ],
@@ -62,18 +62,17 @@
   },
   "Type alias": {
     "prefix": "alias",
-    "body": "alias ${1:Name} : ${2:Type}",
+    "body": "${1:Name} : alias ${2:Type}",
     "description": "Type alias"
   },
   "Extension method": {
     "prefix": "ext",
     "body": [
-      "extension<${1:T}> {",
-      "\tfunc ${2:name}(self: ^${1:T}) -> ${3:void} {",
-      "\t\t$0",
-      "\t}",
+      "@extension",
+      "${2:name} : func(self: ^${1:T}) -> ${3:void} {",
+      "\t$0",
       "}"
     ],
-    "description": "Extension method block"
+    "description": "Extension function"
   }
 }

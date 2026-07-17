@@ -4,6 +4,7 @@
   "description": "Syntax highlighting, snippets, file icon, and build commands for the Chic programming language.",
   "version": "0.1.0",
   "publisher": "chic-lang",
+  "icon": "icons/chic-plugin-icon.png",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -11,7 +12,11 @@
     "Programming Languages"
   ],
   "activationEvents": [
-    "onLanguage:chic"
+    "onLanguage:chic",
+    "onCommand:chic.build",
+    "onCommand:chic.buildDebug",
+    "onCommand:chic.run",
+    "onCommand:chic.init"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -46,24 +51,77 @@
     "commands": [
       {
         "command": "chic.build",
-        "title": "Chic: Build"
+        "title": "Chic: Build Project"
+      },
+      {
+        "command": "chic.buildDebug",
+        "title": "Chic: Build Project with Debug Info"
       },
       {
         "command": "chic.run",
-        "title": "Chic: Run"
+        "title": "Chic: Run Compiled Program"
       },
       {
         "command": "chic.init",
         "title": "Chic: Init Project"
       }
     ],
+    "keybindings": [
+      {
+        "command": "chic.build",
+        "key": "f7",
+        "mac": "f7",
+        "when": "editorLangId == chic"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "chic.build",
+          "when": "editorLangId == chic",
+          "group": "navigation@1"
+        },
+        {
+          "command": "chic.buildDebug",
+          "when": "editorLangId == chic",
+          "group": "navigation@2"
+        },
+        {
+          "command": "chic.run",
+          "when": "editorLangId == chic",
+          "group": "navigation@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "chic.build",
+          "when": "resourceExtname == .chic",
+          "group": "navigation@1"
+        }
+      ]
+    },
     "configuration": {
       "title": "Chic",
       "properties": {
+        "chic.compilerPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to the chic compiler executable. Leave empty to resolve from CHIC_DIR, PATH, or common project-local build paths."
+        },
         "chic.executablePath": {
           "type": "string",
           "default": "chic",
-          "description": "Path to the chic compiler executable. Defaults to 'chic' (assumes it is on $PATH)."
+          "description": "Legacy setting for the chic compiler executable. Prefer chic.compilerPath for new configurations."
+        },
+        "chic.arguments": {
+          "type": "string",
+          "default": "",
+          "description": "Additional arguments appended after 'build <projectRoot> -out <projectRoot>/bin/<projectName>'."
+        },
+        "chic.programArguments": {
+          "type": "string",
+          "default": "",
+          "description": "Arguments passed to the compiled program when running it from VS Code."
         }
       }
     },
